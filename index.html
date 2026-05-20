@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ristorante Bella — Меню</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">✦</span>
+        <div class="logo-text">
+          <span class="logo-name">Ristorante Bella</span>
+          <span class="logo-tagline">Кухня с душой</span>
+        </div>
+      </div>
+
+      <!-- Search + Cart -->
+      <div class="header-actions">
+        <div class="search-wrap">
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="Поиск блюда…"
+            aria-label="Поиск блюда"
+          />
+          <span class="search-icon">⌕</span>
+        </div>
+        <button class="cart-btn" id="cartBtn" aria-label="Корзина">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-sub">Добро пожаловать</p>
+      <h1 class="hero-title">Изысканное меню</h1>
+      <p class="hero-desc">Свежие ингредиенты, авторские рецепты, незабываемый вкус</p>
+    </div>
+    <div class="hero-deco" aria-hidden="true"></div>
+  </section>
+
+  <!-- ===== MENU SECTION ===== -->
+  <main class="menu-section" id="menuSection">
+    <!-- Filter + Sort bar -->
+    <div class="controls-bar">
+      <div class="sort-wrap">
+        <label for="sortSelect" class="sort-label">Сортировать:</label>
+        <select id="sortSelect" class="sort-select">
+          <option value="default">По умолчанию</option>
+          <option value="price-asc">Цена: возрастание</option>
+          <option value="price-desc">Цена: убывание</option>
+          <option value="name-asc">Название: А–Я</option>
+          <option value="calories-asc">Калории: меньше</option>
+        </select>
+      </div>
+      <div class="filter-wrap">
+        <button class="filter-btn active" data-filter="all">Все</button>
+        <button class="filter-btn" data-filter="vegetarian">🥦 Вегетарианское</button>
+        <button class="filter-btn" data-filter="spicy">🌶 Острое</button>
+        <button class="filter-btn" data-filter="popular">⭐ Популярное</button>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="hot" role="tab" aria-selected="true">
+        <span class="tab-icon">🔥</span> Горячее
+      </button>
+      <button class="tab" data-tab="salads" role="tab" aria-selected="false">
+        <span class="tab-icon">🥗</span> Салаты
+      </button>
+      <button class="tab" data-tab="desserts" role="tab" aria-selected="false">
+        <span class="tab-icon">🍮</span> Десерты
+      </button>
+    </div>
+
+    <!-- No results message -->
+    <p class="no-results hidden" id="noResults">Блюда не найдены. Попробуйте другой запрос.</p>
+
+    <!-- Menu grid -->
+    <div class="menu-grid" id="menuGrid" role="tabpanel"></div>
+  </main>
+
+  <!-- ===== CART MODAL ===== -->
+  <div class="modal-overlay hidden" id="cartModal" role="dialog" aria-modal="true" aria-label="Корзина">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Закрыть">✕</button>
+      <h2 class="modal-title">Ваш заказ</h2>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-footer" id="cartFooter"></div>
+    </div>
+  </div>
+
+  <!-- ===== DISH DETAIL MODAL ===== -->
+  <div class="modal-overlay hidden" id="detailModal" role="dialog" aria-modal="true">
+    <div class="modal modal--detail" id="detailContent"></div>
+  </div>
+
+  <!-- ===== TOAST ===== -->
+  <div class="toast hidden" id="toast"></div>
+
+  <script type="module" src="js/data.js"></script>
+  <script type="module" src="js/cart.js"></script>
+  <script type="module" src="js/ui.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
